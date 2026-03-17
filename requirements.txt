@@ -1,0 +1,28 @@
+# Foundation-1 ComfyUI node dependencies
+#
+# torch / torchaudio / numpy / safetensors / transformers / huggingface_hub
+# are already present in ComfyUI portable — not listed here.
+#
+# This file is for documentation only. Auto-install is handled by __init__.py.
+
+# =============================================================================
+# NORMAL INSTALLS (pip install <package>)
+# =============================================================================
+
+einops>=0.7.0
+alias-free-torch>=0.0.6
+ema-pytorch>=0.2.3
+einops-exts>=0.0.3
+
+# =============================================================================
+# SPECIAL INSTALLS (handled by __init__.py)
+# =============================================================================
+
+# stable-audio-tools — installed with --no-deps to avoid pandas==2.0.2
+# (no Python 3.13 wheel, source build fails on missing pkg_resources)
+#   pip install stable-audio-tools --no-deps
+
+# k-diffusion — installed with --target <node_dir>/k_diffusion_files/
+# (avoids __init__.py → evaluation.py → clip → pkg_resources chain)
+# NOT in site-packages, loaded via importlib at generation time
+#   pip install k-diffusion==0.1.1 --no-deps --target ./k_diffusion_files

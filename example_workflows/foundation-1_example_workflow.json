@@ -1,0 +1,307 @@
+{
+  "id": "bc10244d-a014-44e1-8b06-d5c2e2a02e07",
+  "revision": 0,
+  "last_node_id": 13,
+  "last_link_id": 14,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "MarkdownNote",
+      "pos": [
+        -3151.1522250051908,
+        457.26156534144167
+      ],
+      "size": [
+        565.387276003589,
+        962.107594685296
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Foundation-1",
+      "properties": {},
+      "widgets_values": [
+        "# Foundation-1\n## Auto-Download\n**Model auto-downloads on first run** - no manual setup needed!\n| Model | VRAM | Size |\n|-------|------|------|\n| Foundation-1 (fp16) | ~7GB | ~5GB |\n---\n## Manual Download\n| File | Size | Link |\n|------|------|------|\n| Foundation_1.safetensors | ~5GB | [Download](https://huggingface.co/RoyalCities/Foundation-1) |\n| model_config.json | ~2KB | [Download](https://huggingface.co/RoyalCities/Foundation-1) |\n---\nPlace in:\nComfyUI/models/stable_audio/Foundation-1/\n├── Foundation_1.safetensors\n└── model_config.json\n---\n## Requirements\n- **GPU:** 8GB VRAM minimum\n- **Speed:** ~20 it/s with default sampler\n- **Attention:** Flash Attention 2 (minimum) / SageAttention 2.2.0+ (recommended)\n---\n## Samplers\n| Sampler | Quality | Speed | Notes |\n|---------|---------|-------|-------|\n| dpmpp-3m-sde | Best | ~20 it/s | Recommended |\n| dpmpp-2m-sde | Good | ~22 it/s | Slightly faster |\n| k-dpm-fast | Good | Faster | Fewer steps needed |\n---\n## Musical Keys (24 supported)\n**Major:** C, C#, D, Eb, E, F, F#, G, Ab, A, Bb, B\n**Minor:** Cm, C#m, Dm, D#m, Em, Fm, F#m, Gm, G#m, Am, Bbm, Bm\n---\n## Tag Categories\n| Category | Examples |\n|----------|----------|\n| **Instrument** | Synth Lead, Piano, Guitar, Drums, Bass, Strings |\n| **Timbre** | Warm, Bright, Dark, Rich, Clean, Soft |\n| **FX** | Reverb, Delay, Distortion, Chorus, Spacey |\n| **Notation** | Arp, Chord, Melody, Bassline, Rolling |\n| **Character** | Intimate, Wide, Thick, Punchy, Tight |\n---\n## Links\n- Inference Engine [stable-audio-tools](https://github.com/Stability-AI/stable-audio-tools)\n- Model [Foundation-1](https://huggingface.co/RoyalCities/Foundation-1)\n- Issues [Report Bug](https://github.com/saganaki22/ComfyUI-Foundation-1/issues)\n- "
+      ],
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 11,
+      "type": "Foundation1Generate",
+      "pos": [
+        -2188.823775966853,
+        459.9657330655007
+      ],
+      "size": [
+        391.67507592773427,
+        445.07758227539045
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "FOUNDATION1_MODEL",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Foundation1Generate"
+      },
+      "widgets_values": [
+        "Trumpet, Warm, Complex Arp Melody, High Reverb, Low Distortion, Smooth, Silky, Texture",
+        "130 BPM",
+        "8 Bars",
+        "C minor",
+        250,
+        7,
+        42,
+        "fixed",
+        "dpmpp-3m-sde",
+        0.3,
+        500,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewAudio",
+      "pos": [
+        -1767.9496403546939,
+        461.77192354225474
+      ],
+      "size": [
+        320.73657444839955,
+        92.14422410697
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.17.0",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "Note",
+      "pos": [
+        -2551.684869851685,
+        599.8929814071485
+      ],
+      "size": [
+        315.2583284912116,
+        819.3942172668455
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Examples",
+      "properties": {},
+      "widgets_values": [
+        "Bass, FM Bass, Medium Delay, Medium Reverb, Low Distortion, Phaser, Sub Bass, Bass, Upper Mids, Acid, Gritty, Wide, Dubstep, Thick, Silky, Warm, Rich, Overdriven, Crisp, Deep, Clean, Pitch Bend, 303, 8 Bars, 140 BPM, E minor\n\nSub Bass, Bass, Gritty, Small, Square, Bass, Dark, Digital, Thick, Clean, Simple, Bassline, Epic, Choppy, Melody, 4 Bars, 150 BPM, G# minor\t\nFlute, Pizzicato, Punchy, Present, Ambient, Nasal, Melody, Epic, Airy, Slow Speed, 8 Bars, 150 BPM, E minor\n\nHigh Saw, Spacey, Lead, Warm, Silky, Smooth, 303, Synth Lead, Medium Reverb, Low Distortion, Upper Mids, Mids, Pitch Bend, Arp, 8 Bars, 140 BPM, F minor\n\nTrumpet, Warm, Complex Arp Melody, High Reverb, Low Distortion, Smooth, Silky, Texture, 8 Bars, 130 BPM, C minor\n\nSynth, Pad, Chord Progression, Rising, Digital, Bass, Fat, Near, Wide, Silky, Warm, Focused, 8 Bars, 110 BPM, D major\n\nPiccolo, Flute, Airy, Music Box, plucked, complex melody, 8 Bars, 140 BPM, C# minor\n\nSynth Lead, Wavetable Bass, Low Distortion, High Reverb, Sub Bass, Upper Mids, Acid, Gritty, Wide, Thick, Silky, Warm, Rich, Overdriven, Crisp, Clean, 303, Complex, 8 Bars, 140 BPM, F minor\n\nFiddle, Bowed Strings, Full, Clean, Spacey, Rich, Intimate, Thick, Rolling, Arp, Fast Speed, Complex, 8 Bars, 128 BPM, B minor\n\nChiptune, Chord Progression, Pulse Wave, Medium Reverb, 8 Bars, 128 BPM, D minor\n\nKalimba, Mallet, Medium Reverb, Overdriven, Wide, Metallic, Thick, Sparkly, Upper Mids, Bright, Airy, Alternating, Chord Progression, Atmosphere, Spacey, Fast Speed, 8 Bars, 120 BPM, B minor"
+      ],
+      "color": "#c09430",
+      "bgcolor": "rgba(24,24,27,.9)"
+    },
+    {
+      "id": 12,
+      "type": "Foundation1Generate",
+      "pos": [
+        -2192.598279006406,
+        973.5718421978866
+      ],
+      "size": [
+        392.75945423584017,
+        441.53901601562507
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "FOUNDATION1_MODEL",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Foundation1Generate"
+      },
+      "widgets_values": [
+        "Kalimba, Mallet, Medium Reverb, Overdriven, Wide, Metallic, Thick, Sparkly, Upper Mids, Bright, Airy, Alternating, Chord Progression, Atmosphere, Spacey, Fast Speed\n",
+        "120 BPM",
+        "8 Bars",
+        "B minor",
+        250,
+        7,
+        42,
+        "fixed",
+        "dpmpp-3m-sde",
+        0.3,
+        500,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 6,
+      "type": "PreviewAudio",
+      "pos": [
+        -1769.7706918911329,
+        977.632733201983
+      ],
+      "size": [
+        320.73657444839955,
+        92.14422410697
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 12
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.17.0",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 13,
+      "type": "Foundation1ModelLoader",
+      "pos": [
+        -2536.108067828177,
+        456.4654973024406
+      ],
+      "size": [
+        281.1138671875,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "FOUNDATION1_MODEL",
+          "links": [
+            13,
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Foundation1ModelLoader"
+      },
+      "widgets_values": [
+        "Foundation-1/Foundation_1.safetensors",
+        "auto"
+      ]
+    }
+  ],
+  "links": [
+    [
+      11,
+      11,
+      0,
+      3,
+      0,
+      "AUDIO"
+    ],
+    [
+      12,
+      12,
+      0,
+      6,
+      0,
+      "AUDIO"
+    ],
+    [
+      13,
+      13,
+      0,
+      11,
+      0,
+      "FOUNDATION1_MODEL"
+    ],
+    [
+      14,
+      13,
+      0,
+      12,
+      0,
+      "FOUNDATION1_MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.7513148009015781,
+      "offset": [
+        3536.4442248951304,
+        1.8188108226249824
+      ]
+    },
+    "frontendVersion": "1.41.20",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,0 +1,21 @@
+[project]
+name = "ComfyUI-foundation-1"
+description = "ComfyUI custom nodes for Foundation-1 | structured text-to-sample generation for music production"
+version = "0.1.0"
+license = {file = "LICENSE"}
+dependencies = [
+    "einops",
+    "stable-audio-tools",
+    "alias-free-torch",
+    "k-diffusion",
+    "ema-pytorch",
+    "einops-exts",
+]
+
+[project.urls]
+Repository = "https://github.com/Saganaki22/ComfyUI-Foundation-1"
+
+[tool.comfy]
+PublisherId = "saganaki22"
+DisplayName = "Foundation-1"
+Icon = "https://avatars.githubusercontent.com/u/84208527"
