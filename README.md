@@ -33,7 +33,7 @@ This ComfyUI wrapper provides native node-based integration with:
 - **Key-aware synthesis** with full western key support
 - **Native progress bars** and interruption support
 
-> **Companion Video:** [Watch the Foundation-1 overview and design philosophy](https://www.youtube.com/watch?v=Foundation1Video)
+> **Companion Video:** [Watch the Foundation-1 overview and design philosophy](https://www.youtube.com/watch?v=O2iBBWeWaL8)
 
 ---
 
@@ -259,6 +259,9 @@ For the complete list of supported tags, see the **[Master Tag Reference Sheet](
 
 ### Tag Distribution Charts
 
+<details>
+<summary><b>Click to expand tag distribution charts</b></summary>
+
 <div align="center">
   <img src="https://huggingface.co/RoyalCities/Foundation-1/resolve/main/Charts/subfamilites_pie.PNG" alt="Sub-Family Distribution" width="80%">
   <p><em>Instrument Sub-Family Coverage</em></p>
@@ -273,6 +276,8 @@ For the complete list of supported tags, see the **[Master Tag Reference Sheet](
   <img src="https://huggingface.co/RoyalCities/Foundation-1/resolve/main/Charts/fx_pie.PNG" alt="FX Tag Distribution" width="80%">
   <p><em>FX Descriptor Coverage</em></p>
 </div>
+
+</details>
 
 ---
 
@@ -369,16 +374,46 @@ pip install -U huggingface_hub
 huggingface-cli download RoyalCities/Foundation-1 --local-dir ComfyUI/models/stable_audio/Foundation-1
 ```
 
-### Missing Dependencies?
+Only these two files are required:
+- `Foundation_1.safetensors` (~3GB model weights)
+- `model_config.json` (model configuration)
 
-All dependencies are auto-installed at startup. If auto-install fails:
+### Dependency Installation Failed?
+
+The `__init__.py` auto-installs dependencies at startup. If it fails, install manually:
+
+**Normal pip installs:**
 ```bash
-cd ComfyUI/custom_nodes/ComfyUI-Foundation-1
-pip install -r requirements.txt
+pip install einops>=0.7.0
+pip install alias-free-torch
+pip install ema-pytorch
+pip install einops-exts
 ```
 
-Common missing packages:
-- `sageattention` — for optimized attention (`pip install sageattention`)
+**Special installs with `--no-deps` (required!):**
+
+These packages MUST be installed with `--no-deps` or they will break your ComfyUI environment:
+
+```bash
+# stable-audio-tools --no-deps avoids pandas==2.0.2 (no Python 3.13 wheel)
+pip install stable-audio-tools --no-deps
+
+# k-diffusion must go to private folder (avoids conflict with ComfyUI's bundled version)
+pip install k-diffusion==0.1.1 --no-deps --target ComfyUI/custom_nodes/ComfyUI-Foundation-1/k_diffusion_files/
+```
+
+> [!WARNING]
+> **Do NOT run:**
+> ```bash
+> pip install stable-audio-tools    # WRONG - pulls pandas==2.0.2
+> pip install k-diffusion           # WRONG - conflicts with ComfyUI
+> ```
+
+### What Goes in k_diffusion_files/?
+
+The `k_diffusion_files/` folder is created automatically by the auto-installer. It contains a private copy of `k-diffusion` that's loaded at runtime via `importlib` — this prevents conflicts with ComfyUI's own bundled `k_diffusion` and avoids the `clip→pkg_resources` import chain issue.
+
+If this folder is missing or corrupted, the node will re-download `k-diffusion==0.1.1` automatically on next startup.
 
 ### Out of Memory?
 
@@ -409,7 +444,7 @@ Foundation-1 installs k-diffusion to a private directory (`k_diffusion_files/`) 
 - **Inference Engine:** [Stability-AI/stable-audio-tools](https://github.com/Stability-AI/stable-audio-tools)
 
 ### 🌐 Community
-- **Companion Video:** [Foundation-1 Overview](https://www.youtube.com/watch?v=Foundation1Video)
+- **Companion Video:** [Foundation-1 Overview](https://www.youtube.com/watch?v=O2iBBWeWaL8)
 
 ---
 
