@@ -1,7 +1,7 @@
 [project]
 name = "ComfyUI-foundation-1"
 description = "ComfyUI custom nodes for Foundation-1 | structured text-to-sample generation for music production"
-version = "0.1.3"
+version = "0.1.4"
 license = {file = "LICENSE"}
 dependencies = [
     "einops",
