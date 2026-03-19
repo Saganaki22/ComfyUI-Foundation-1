@@ -71,6 +71,12 @@ https://github.com/user-attachments/assets/6c00c56d-ea46-4feb-9bf8-876ecb2487b2
 > - **Minimum:** Flash Attention 2 (built into PyTorch 2.0+ SDPA backend)
 > - **Recommended:** SageAttention 2.2.0+ for better performance
 
+> [!IMPORTANT]
+> **First Run Requires Internet**
+> - The T5 text encoder (~900MB) is downloaded automatically from HuggingFace on first use
+> - Model weights (~3GB) are also downloaded on first use
+> - Subsequent runs work offline once everything is cached
+
 ---
 
 ## Installation
